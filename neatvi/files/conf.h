@@ -1,5 +1,8 @@
 /* neatvi configuration file */
 
+/* access mode of new files */
+#define MKFILE_MODE		0666
+
 /* map file names to file types */
 static struct filetype {
 	char *ft;		/* file type */
@@ -58,8 +61,11 @@ static struct highlight {
 	{"---", {3}, "^(\\[enter to continue\\])"},
 };
 
+/* how to hightlight current line (hll option) */
+#define SYN_LINE		(SYN_BGMK(11))
+
 /* how to hightlight text in the reverse direction */
-#define SYN_REVDIR		(SYN_BGMK(255))
+#define SYN_REVDIR		(SYN_BGMK(7))
 
 /* right-to-left characters (used only in dircontexts[] and dirmarks[]) */
 #define CR2L		"\330\241\330\242\330\243\330\244\330\245\330\246\330\247\330\250\330\251\330\252\330\253\330\254\330\255\330\256\330\257\330\260\330\261\330\262\330\263\330\264\330\265\330\266\330\267\330\270\330\271\330\272\331\200\331\201\331\202\331\203\331\204\331\205\331\206\331\207\331\210\331\211\331\212\331\212\331\276\332\206\332\230\332\251\332\257\333\214\342\200\214\342\200\215\330\233\330\214\302\273\302\253\330\237\331\222\331\214\331\215\331\213\331\217\331\220\331\216\331\221"
