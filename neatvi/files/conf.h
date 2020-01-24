@@ -45,14 +45,14 @@ static struct highlight {
 	{"mk", {4}, "([A-Za-z_%.]+):"},
 
 	/* shell script */
-	{"sh", {0,0,4}, "(^|[^\\])(#.*$)"},
+	{"sh", {4}, "(^|[[:space:]])#.*$"},
 	{"sh", {}, "\"([^\"]|\\\\\")*\""},
 	{"sh", {}, "\'[^\']*\'"},
 
 	/* awk script */
 	{"awk", {SYN_BD}, "\\<(if|else|while|for|do|break|continue)\\>"},
 	{"awk", {SYN_BD}, "\\<(print|printf|return|next|nextfile|delete|exit|getline)\\>"},
-	{"awk", {0,0,4}, "(^|[^\\])(#.*$)"},
+	{"awk", {4}, "(^|[[:space:]])#.*$"},
 	{"awk", {0, SYN_BD}, "([a-zA-Z_][a-zA-Z0-9_]+)[ \t]*\\(", 1},
 	{"awk", {}, "\"([^\"]|\\\\\")*\""},
 	{"awk", {}, "\'[^\']*\'"},
