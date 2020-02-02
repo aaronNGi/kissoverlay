@@ -10,6 +10,7 @@ static struct filetype {
 } filetypes[] = {
 	{"c", "\\.[hc]$"},				/* C */
 	{"roff", "\\.(ms|tr|roff|tmac|txt|[1-9])$"},	/* troff */
+	{"md", "\\.md$"},				/* markdown */
 	{"mk", "Makefile$|makefile$|\\.mk$"},		/* makefile */
 	{"sh", "\\.sh$"},				/* shell script */
 	{"awk", "\\.awk$"},				/* awk script */
@@ -40,12 +41,30 @@ static struct highlight {
 	{"roff", {3}, "\\\\([^[(*$fgkmns]|\\(..|\\[[^]]*\\])"},
 	{"roff", {3}, "\\$[^$]+\\$"},
 
+	/* markdown */
+	{"md", {0}, "^[[:space:]]{4}.*"},
+	{"md", {4}, "^[[:space:]]*#+[[:space:]].*"},
+	{"md", {4}, "^[[:space:]]*-+$"},
+	{"md", {4}, "^[[:space:]]*=+$"},
+	{"md", {8}, "^[[:space:]]*```.*"},
+	{"md", {3}, "`[^`]+`"},
+	{"md", {7}, "\\*\\*[^*]+\\*\\*"},
+	{"md", {7 | SYN_IT}, "\\*[^`*]+\\*"},
+	{"md", {7 | SYN_IT}, "~~[^`~]+~~"},
+	{"md", {7 | SYN_IT}, "__[^`_]+__"},
+	{"md", {7 | SYN_IT}, "_[^`_]+_"},
+	{"md", {0, 7, 5}, "\\[([^]]+)]\\(([^)]+)\\)"},
+	{"md", {0, 7, 5}, "\\[([^]]+)]\\[([^)]+)]"},
+
 	/* makefile */
 	{"mk", {4}, "#.*$"},
 	{"mk", {4}, "([A-Za-z_%.]+):"},
 
 	/* shell script */
+	{"sh", {SYN_BD}, "\\<(if|then|elif|else|fi|[][]|for|until|while|do|done|break|continue|case|esac|in)\\>"},
+	{"sh", {SYN_BD}, "\\<(exit|return|true|false|alias|unalias|bg|jobs|cd|echo|eval|exec|export|fc|getopts|hash|pwd|read|readonly|printf|set|shift|test|times|trap|type|ulimit|umask|unset|wait)\\>"},
 	{"sh", {4}, "(^|[[:space:]])#.*$"},
+	{"sh", {0, SYN_BD}, "([a-zA-Z_][a-zA-Z0-9_]+)\\(\\)", 1},
 	{"sh", {}, "\"([^\"]|\\\\\")*\""},
 	{"sh", {}, "\'[^\']*\'"},
 
