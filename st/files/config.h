@@ -32,7 +32,7 @@ static float chscale = 1.0;
  *
  * More advanced example: " `'\"()[]{}"
  */
-char *worddelimiters = " ";
+char *worddelimiters = " │";
 
 /* selection timeouts (in milliseconds) */
 static unsigned int doubleclicktimeout = 200;
