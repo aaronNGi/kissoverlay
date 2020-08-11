@@ -1,16 +1,15 @@
-libressl
-pkgconf make
-perl make
-yasm make
 alsa-lib
 lame
 libass
 libogg
-libtheora
+libressl
 libvorbis
-libwebp
 libvpx
+libwebp
+linux-headers make
+nasm          make
 opus
 x264
 x265
 xvidcore
+libressl
