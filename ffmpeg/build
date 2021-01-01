@@ -1,6 +1,8 @@
 #!/bin/sh -e
 
 ./configure \
+    --cc="${CC:-cc}" \
+    --cxx="${CXX:-c++}" \
     --prefix=/usr \
     --enable-shared \
     --enable-gpl \
@@ -16,12 +18,14 @@
     --enable-libxvid \
     --enable-libwebp \
     --enable-libdrm \
+    --enable-libbluray \
     --enable-libtls \
     --enable-nonfree \
-    --disable-debug
+    --x86asmexe=nasm \
+    --disable-debug \
+    --disable-libxml2
 
-make CC="${CC:-gcc}"
+make
 make DESTDIR="$1" install
 
-# Remove examples.
 rm -rf "$1/usr/share/ffmpeg/examples"
