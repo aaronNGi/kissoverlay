@@ -1,6 +1,6 @@
 [submodule "repo"]
 	path = repo
-	url = https://github.com/kisslinux/repo
+	url = git@github.com:kiss-community/repo-main.git
 [submodule "community"]
 	path = community
-	url = https://github.com/kisslinux/community.git
+	url = git@github.com:kiss-community/repo-community.git
