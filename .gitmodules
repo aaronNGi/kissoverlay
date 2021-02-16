@@ -1,6 +1,6 @@
 [submodule "repo"]
-	path = repo
+	path = repo-main
 	url = git@github.com:kiss-community/repo-main.git
 [submodule "community"]
-	path = community
+	path = repo-community
 	url = git@github.com:kiss-community/repo-community.git
